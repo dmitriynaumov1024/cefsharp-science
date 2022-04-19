@@ -1,0 +1,137 @@
+* {
+    box-sizing: border-box;
+    font-family: system-ui, sans-serif;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-button {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+    width: 6px;
+    height: 58px;
+    background-color: #d4d4d4;
+    border-radius: 3px;
+}
+
+body>main {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0; bottom: 0;
+    left: 0; right: 0;
+    margin: 0;
+    padding: 0;
+    background-color: #fafafa;
+}
+
+button {
+    cursor: pointer;
+}
+
+.container-padded {
+    flex-shrink: 0;
+    position: relative;
+    width: 100%;
+    padding: 8px 30px;
+}
+
+.container-main {
+    margin: 8px 0;
+    flex-grow: 1;
+    flex-shrink: 1;
+    overflow-y: scroll;
+}
+
+.top-toolbar {
+    z-index: 99;
+    display: flex;
+    flex-direction: row;
+    box-shadow: 0 2px 7px rgba(40, 40, 40, 0.05);
+    background-color: #fcfcfc;
+}
+
+.footer {
+    font-size: 12px;
+    box-shadow: 0 -2px 7px rgba(40, 40, 40, 0.05);
+    background-color: #fcfcfc;
+}
+
+.rounded-border {
+    border-radius: 2px;
+    outline: none;
+}
+
+.gray-border {
+    border: 1px solid #f0f0f0;
+}
+
+.gray-border:focus {
+    border: 1px solid #e3e3e3;
+}
+
+.top-toolbar>* {
+    display: inline-block;
+    outline: none;
+    padding: 4px 14px;
+    font-size: 14px;
+}
+
+#addressInput {
+    margin-right: 5px;
+    flex-grow: 1;
+    background-color: #fdfdfd;
+}
+
+#loadButton {
+    background-color: #343434;
+    border: 1px solid #343434;
+    color: #f0f0f0;
+}
+
+#loadButton:hover {
+    background-color: #434343;
+    color: #fefefe;
+}
+
+#loadButton:active {
+    background-color: #202020;
+    color: #fefefe;
+}
+
+#output {
+    white-space: pre-wrap;
+}
+
+.news-item {
+    font-size: 14px;
+    padding: 10px 14px;
+    margin-bottom: 12px;
+    background-color: #fefefe;
+}
+
+.news-item h2 {
+    font-size: 110%;
+}
+
+.news-item>* {
+    margin: 0 0 8px;
+}
+
+.news-item>*:last-child {
+    margin: 0px;
+}
+
+.errors {
+    margin: 8px 0px;
+    padding: 14px;
+    font-size: 14px;
+    color: #676767;
+}

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Rss Loader</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="https://unpkg.com/vue@2"></script>
+</head>
+<body>
+    <main id="app-container">
+        <div class="container-padded top-toolbar">
+            <input class="rounded-border gray-border" id="addressInput" type="text" placeholder="address" v-model="address">
+            <button class="rounded-border" id="loadButton" v-on:click="loadRss()">Load</button>
+        </div>
+        <div class="container-padded container-main">
+            <div class="news-item rounded-border gray-border" v-for="item in news">
+                <h2>{{item.Title}}</h2>
+                <p>{{item.PubDate}}</p>
+                <p>{{item.Description}}</p>
+            </div>
+            <p class="errors">{{errors}}</p>
+            <div>
+            </div>
+        </div>
+        <div class="container-padded footer">
+            <span>
+                &copy; 2022 Dmitriy Naumov | 
+                <a href="https://github.com/dmitriynaumov1024">My github</a>
+            </span>
+        </div>
+    </main>
+    <script>
+        var app = new Vue({
+            el: "#app-container",
+            data: {
+                address: "",
+                news: [],
+                errors: "News will appear here"
+            },
+            methods: {
+                /*loadRss: function() {
+                    var self = this;
+                    console.log(self.address)
+                    // We have to call C# methods that are synchronous. But 
+                    // in javascript environment they will be converted
+                    // to async method. If you call real async C# method, 
+                    // it will not work.
+                    rssLoader.getRss(self.address)
+                        .then(function(value){
+                            self.news = value;
+                        })
+                        .catch(function(err){
+                            self.errors = err;
+                        })
+                }*/
+                loadRss: function() {
+                    var self = this;
+                    console.log(self.address)
+                    // m.fetch was invented by me to make a unified
+                    // complex object return architecture
+                    m.fetch("rss.get", self.address)
+                        .then(function(value){
+                            self.news = JSON.parse(value);
+                            self.errors = "";
+                        })
+                        .catch(function(err){
+                            self.errors = err;
+                            self.news = [];
+                        })
+                }
+            }
+        });
+
+    </script>
+</body>
+</html>
